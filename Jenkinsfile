@@ -23,14 +23,9 @@ pipeline {
                 sh 'npm run build'
             }
         }
-        stage('zip Artifacts') {
+        stage('codeDeploy'){
             steps {
-                sh "zip -r build_${env.CURRENT_DATETIME}.zip dist/"
-            }
-        }
-        stage('upload to s3') {
-            steps {
-                sh "aws s3 cp build_${env.CURRENT_DATETIME}.zip s3://tmovie-artifact/"
+                step([$class: 'AWSCodeDeployPublisher', applicationName: 'tmovie-project', awsAccessKey: '', awsSecretKey: <object of type hudson.util.Secret>, deploymentGroupAppspec: false, deploymentGroupName: 'movie-deployment-group', excludes: '', iamRoleArn: '', includes: 'dist/', proxyHost: '', proxyPort: 0, region: 'ap-south-1', s3bucket: 'tmovie-artifact ', s3prefix: '', subdirectory: '', versionFileName: '', waitForCompletion: false])
             }
         }
     }
