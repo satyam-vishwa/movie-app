@@ -30,7 +30,7 @@ pipeline {
         }
         stage('upload to s3') {
             steps {
-                sh "aws s3 cp build_${env.CURRENT_DATETIME}.zip s3://erp-server-node.js/"
+                sh "aws s3 cp build_${env.CURRENT_DATETIME}.zip s3://tmovie-artifact/"
             }
         }
     }
