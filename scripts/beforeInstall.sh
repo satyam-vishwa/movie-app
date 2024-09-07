@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Stop any existing application running (if applicable)
 echo "Stopping existing application..."
