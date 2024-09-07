@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Navigate to the deployment directory
 cd /home/ec2-user/dist
